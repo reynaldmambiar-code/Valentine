@@ -39,10 +39,16 @@ body.card-mode { font-family: 'Crimson Text', serif; background: #111; color: #f
 
 <script>
 function showValentine() {
-    // Music setup
+    // Music setup: Using a direct link to Zia Quizon's Ako Na Lang
+    // This starts playing the moment the user clicks "Refresh"
     const audio = new Audio('https://files.catbox.moe/k3v78j.mp3'); 
-    audio.volume = 0.5;
-    audio.play();
+    audio.type = 'audio/mpeg';
+    audio.volume = 0.7; 
+    
+    // Play the audio and catch errors (like browser blocks)
+    audio.play().catch(function(error) {
+        console.log("Audio play failed: ", error);
+    });
 
     document.body.classList.add('card-mode');
     document.body.innerHTML = `
